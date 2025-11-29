@@ -1,6 +1,8 @@
 # Holoplus Mocked API
 
-Mock version of the `api.holoplus.com` API. **Currently incomplete, and might become outdated in the future.** 
+**IMPORTANT: This is currently incomplete and covers mostly only `GET` endpoints!**
+
+Mock version of the `api.holoplus.com` API. **Based on the `3.0.0` version fo the API.**
 
 The main purpose of this project is to document the API, to make it easier to develop apps that need to access it.
 It should also be useful for testing.
@@ -12,13 +14,13 @@ Built docs can be found here: https://kunesj.github.io/holoplus-resources
 
 Install:
 
-- Use Python 3.11+
-- Install dependencies `pip install -r requirements.txt -c ../constraints.txt`
+- Use `uv` with Python 3.11+
+- Install dependencies `uv sync --locked`
 
 Run:
 
 ```shell
-litestar --app holoplus_mocked_api.app:create_app run --port 8080
+uv run litestar --app holoplus_mocked_api.app:create_app run --port 8080
 ```
 
 Generated documentation can be found at http://127.0.0.1:8080/schema.

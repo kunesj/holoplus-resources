@@ -1,4 +1,4 @@
-.venv*
+*/.venv
 /holoplus_apk
 
 # PyCharm,VSCode
@@ -9,6 +9,9 @@
 # Python
 *.pyc
 __pycache__
+
+.mypy_cache
+.ruff_cache
 
 # LibreOffice lock files
 .~lock*

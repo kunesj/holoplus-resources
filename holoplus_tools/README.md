@@ -9,11 +9,11 @@ Currently, contains mostly tools for getting/refreshing API tokens.
 
 Install:
 
-- Use Python 3.11+
-- Install dependencies `pip install -r requirements.txt -c ../constraints.txt`
+- Use `uv` with Python 3.11+
+- Install dependencies `uv sync --locked`
 
 Run:
 
 ```shell
-python -m holoplus_tools --help
+uv run python -m holoplus_tools --help
 ```
