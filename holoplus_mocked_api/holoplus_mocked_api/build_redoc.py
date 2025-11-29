@@ -10,6 +10,6 @@ from .app import create_app
 if __name__ == "__main__":
     logging.getLogger("httpx").setLevel(logging.ERROR)
 
-    with TestClient(app=create_app(render_plugins=[RedocRenderPlugin(version="latest")])) as client:
+    with TestClient(app=create_app(plugins=[RedocRenderPlugin(version="latest")])) as client:
         response = client.get("/schema")
         print(response.text)  # noqa: T201
