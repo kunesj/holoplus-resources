@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any
+
 import litestar
 import litestar.openapi
 from litestar.exceptions import HTTPException, NotFoundException
@@ -14,7 +16,7 @@ from .v4 import ROUTES as V4_ROUTES
 from .v5 import ROUTES as V5_ROUTES
 
 
-def create_app() -> litestar.Litestar:
+def create_app(**kwargs: Any) -> litestar.Litestar:
     litestar_monkey_patch()
     return litestar.Litestar(
         route_handlers=[
@@ -37,4 +39,5 @@ def create_app() -> litestar.Litestar:
             HoloplusException: exception_handler,
             NotFoundException: root_exception_handler,
         },
+        **kwargs,
     )
