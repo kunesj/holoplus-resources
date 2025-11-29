@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Sequence
 
 import litestar
 import litestar.openapi
 from litestar.exceptions import HTTPException, NotFoundException
+from litestar.openapi.plugins import OpenAPIRenderPlugin
 
 from .account_hololive_net import ROUTES as ACCOUNT_HOLOLIVE_NET_ROUTES
 from .exceptions import HoloplusException, exception_handler, litestar_monkey_patch, root_exception_handler
@@ -16,7 +17,7 @@ from .v4 import ROUTES as V4_ROUTES
 from .v5 import ROUTES as V5_ROUTES
 
 
-def create_app(**kwargs: Any) -> litestar.Litestar:
+def create_app(render_plugins: Sequence[OpenAPIRenderPlugin] = tuple()) -> litestar.Litestar:
     litestar_monkey_patch()
     return litestar.Litestar(
         route_handlers=[
@@ -32,6 +33,7 @@ def create_app(**kwargs: Any) -> litestar.Litestar:
             title="Holoplus API (Mocked)",
             version="3.0.0",
             use_handler_docstrings=True,
+            render_plugins=render_plugins,
         ),
         exception_handlers={
             Exception: exception_handler,
@@ -39,5 +41,4 @@ def create_app(**kwargs: Any) -> litestar.Litestar:
             HoloplusException: exception_handler,
             NotFoundException: root_exception_handler,
         },
-        **kwargs,
     )
