@@ -2,6 +2,17 @@ default_language_version:
   python: python3.11
 
 repos:
+- repo: https://github.com/astral-sh/uv-pre-commit
+  rev: 0.9.15
+  hooks:
+    - id: uv-lock
+      name: uv-lock (holoplus_mocked_api)
+      entry: bash -c 'cd holoplus_mocked_api && uv lock'
+      files: ^holoplus_mocked_api/(uv\.lock|pyproject\.toml|uv\.toml)$
+    - id: uv-lock
+      name: uv-lock (holoplus_tools)
+      entry: bash -c 'cd holoplus_tools && uv lock'
+      files: ^holoplus_tools/(uv\.lock|pyproject\.toml|uv\.toml)$
 - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.12.2
   hooks:
