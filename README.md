@@ -7,6 +7,26 @@ Collection of different tools and resources that can be useful when working with
 - [Holoplus Tools](./holoplus_tools) - Useful tools for getting/refreshing tokens
 
 
-### Development
+## Development
 
-- Use pre-commit
+### Pre-commit
+
+Install prek:
+
+```bash
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/j178/prek/releases/download/v0.2.3/prek-installer.sh | sh
+prek self update
+```
+
+Install hooks:
+
+```bash
+prek install
+prek install-hooks
+```
+
+To manually run it on all files:
+
+```bash
+prek run --all-files
+```
